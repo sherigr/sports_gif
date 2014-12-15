@@ -14,3 +14,30 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(function() {
+	console.log('Up and Running');
+	// listeners
+});
+
+
+function renderGifs() {
+	$.get('http://api.giphy.com/v1/gifs/search?q=sports&api_key=dc6zaTOxFJmzC').done(function(gifs) {
+		for (var i = 0; i < gifs.data.length; i++) {
+			var $img = $('<img />').attr('src', gifs.data[i].images.fixed_height.url); 
+			$('#gifs').append($img);
+		}
+		
+	
+	});
+
+	// 	$.get('http://api.giphy.com/v1/gifs/search?q=sports&api_key=dc6zaTOxFJmzC').done(function(gifs) {
+	// 	for (var i = 0; i < gifs.data.length; i++) {
+	// 	var $img = $("<img />").attr('src', data.results[0])."http://media0.giphy.com/media/QITjGJ7oUSYJq/200.gif");
+
+	// 	}
+
+	// });
+
+};
+
