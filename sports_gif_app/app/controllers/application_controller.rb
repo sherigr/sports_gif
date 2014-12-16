@@ -6,4 +6,11 @@ class ApplicationController < ActionController::Base
   def index
   	render layout: 'application', text: ''
   end
+
+  def show
+  	@gif = Gif.find(params[:id])
+		render json: @gif
+  end
+
+
 end
