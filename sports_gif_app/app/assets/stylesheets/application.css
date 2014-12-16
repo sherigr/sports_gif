@@ -14,3 +14,11 @@
  *= require_self
  */
 
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:600italic);
+
+body {
+	text-align: center;
+	font-size: 48px;
+	background-color: #D5E9F1;
+}
+

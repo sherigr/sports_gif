@@ -20,9 +20,9 @@ $(function() {
 	// click/play individual gif
 	renderGifs()
 	$('#gifs').on('click', 'img', viewGif);
-
-	$('search-button').click(searchGifs);
-
+	// $('#gifs').hover('mouseover', hoverGifIn, hoverGifOut);
+	$('#search-button').click(searchGifs);
+	// $('#search-button').keyup(searchGifs);
 });
 
 
@@ -35,19 +35,62 @@ function renderGifs() {
 	});
 };
 
+//STILL GIF
+// function renderGifs() {
+// 	$.get('http://api.giphy.com/v1/gifs/search?q=sports&api_key=dc6zaTOxFJmzC').done(function(gifs) {
+// 		for (var i = 0; i < gifs.data.length; i++) {
+// 			var $img = $('<img />').attr('src', gifs.data[i].images.fixed_height_still.url); 
+// 			$('#gifs').append($img);
+// 		}	
+// 	});
+// };
+
+
+
+
 
 function searchGifs() {
-	$.get('http://api.giphy.com/v1/gifs/search').done(function(search) {
-		$('search').val();
-	});
+	var userInput = $('#search-input').val()
+	console.log(userInput);
+	$.get('http://api.giphy.com/v1/gifs/search?q=' + userInput + '&api_key=dc6zaTOxFJmzC').done(function(gifs) {
+		console.log(gifs);
 
+		$('#gifs').empty();
+		for (var i = 0; i < gifs.data.length; i++) {
+			var $img = $('<img />').attr('src', gifs.data[i].images.fixed_height.url);
+			$('#gifs').append($img);
+		}
+
+	});
 };
+
+	// $.get('http://api.giphy.com/v1/gifs/search').done(function(search) {
+		
+		// $('search').val();
+	// });
+
+// };
+
+
+
+
 
 function viewGif() {
 	$('img').hide();
 	$(this).show();
 };
 
+
+
+// ('div.mouse-hover').hover(function() 
+// hoverIn = startGif 
+// hoverOut = stopGif 
+// 	$(this).fadeIn(100);
+// 	$(this).fadeOut(200);
+// });
+	
+	
+		
 
 
 
