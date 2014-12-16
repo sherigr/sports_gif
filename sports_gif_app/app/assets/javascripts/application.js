@@ -20,6 +20,9 @@ $(function() {
 	// click/play individual gif
 	renderGifs()
 	$('#gifs').on('click', 'img', viewGif);
+
+	$('search-button').click(searchGifs);
+
 });
 
 
@@ -32,9 +35,10 @@ function renderGifs() {
 	});
 };
 
-function searchGifs(search) {
-	$.get('http://api.giphy.com/v1/gifs/search').done(function(search) {
 
+function searchGifs() {
+	$.get('http://api.giphy.com/v1/gifs/search').done(function(search) {
+		$('search').val();
 	});
 
 };
