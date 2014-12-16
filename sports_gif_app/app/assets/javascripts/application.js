@@ -17,7 +17,10 @@
 
 $(function() {
 	console.log('Up and Running');
-	// listeners
+	// click/play individual gif
+	renderGifs()
+	$('#gifs').on('click', 'img', viewGif);
+	$('search-button').click(searchGifs);
 });
 
 
@@ -26,18 +29,19 @@ function renderGifs() {
 		for (var i = 0; i < gifs.data.length; i++) {
 			var $img = $('<img />').attr('src', gifs.data[i].images.fixed_height.url); 
 			$('#gifs').append($img);
-		}
-		
-	
+		}	
+	});
+};
+
+function searchGifs() {
+	$.get('http://api.giphy.com/v1/gifs/search').done(function(search) {
+		$('search').val();
 	});
 
-	// 	$.get('http://api.giphy.com/v1/gifs/search?q=sports&api_key=dc6zaTOxFJmzC').done(function(gifs) {
-	// 	for (var i = 0; i < gifs.data.length; i++) {
-	// 	var $img = $("<img />").attr('src', data.results[0])."http://media0.giphy.com/media/QITjGJ7oUSYJq/200.gif");
+};
 
-	// 	}
-
-	// });
-
+function viewGif() {
+	$('img').hide();
+	$(this).show();
 };
 
