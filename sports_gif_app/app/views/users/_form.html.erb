@@ -1,0 +1,46 @@
+
+<% @user.errors.full_messages.each do |msg| %>
+	<li><%= msg %></li>
+	<% end %>
+
+	<hr>
+
+	<div class="new-user">
+	<%= form_for @user do |f| %>
+		<%= f.label :username %><br>
+		<%= f.text_field :username %><br>
+	</div>
+
+	<div class="new-user">
+		<%= f.label :first_name %><br>
+		<%= f.text_field :first_name %><br>
+	</div>
+
+	<div class="new-user">
+		<%= f.label :last_name %><br>
+		<%= f.text_field :last_name %><br>
+	</div>
+
+	<div class="new-user">
+		<%= f.label :favorite %><br>
+		<%= f.text_area :favorite %><br>
+	</div>
+
+	<div class="new-user">
+		<%= f.label :password %><br>
+		<%= f.password_field :password %><br>
+	</div>
+
+	<div class="new-user">
+		<%= f.label :password_confirmation %><br>
+		<%= f.password_field :password_confirmation %><br>
+	</div>
+
+	<div class="new-submit">
+	<br><%= f.submit %>
+</div>
+<% end %>
+
+
+
+
