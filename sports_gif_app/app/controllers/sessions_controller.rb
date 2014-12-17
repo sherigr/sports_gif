@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
 
+	before_action :authenticate
 	def new
 	end
 
@@ -15,7 +16,7 @@ class SessionsController < ApplicationController
 
 	def destroy
 		session[:current_user_id] = nil
-		redirect_to users_path
+		redirect_to root_path
 	end
 
 end
