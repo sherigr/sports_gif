@@ -1,6 +1,7 @@
 <section>
-<h2>If you must go</h2>
+<h2>Edit your info or if you must go</h2>
 <%= render 'form' %>
-<p><%= button_to'delete', users_path(@user),
-  method: :delete %></p>
+<p><%= button_to'delete', edit_users_path(@user),
+  method: :delete :edit %></p>
 </section>
+

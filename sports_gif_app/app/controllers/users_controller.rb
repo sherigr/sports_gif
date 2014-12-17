@@ -32,12 +32,21 @@ class UsersController < ApplicationController
 		end
 	end
 
+	# def destroy
+	# 	@user = User.find(params[:id])
+	# 	respond_to do |format|
+	# 		@user.destroy
+	# 		format.html { redirect_to users_path }
+	# 		format.json { render json: @user}
+	# 	end
+	# end
+
 	def destroy
 		@user = User.find(params[:id])
-		respond_to do |format|
-			@user.destroy
-			format.html { redirect_to users_path }
-			format.json { render json: @user}
+		@user.destroy
+
+		if @user.destroy
+			redirect_to root_path
 		end
 	end
 	
