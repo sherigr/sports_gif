@@ -22,33 +22,43 @@ class UsersController < ApplicationController
 		render :edit
 	end
 
+	# def update
+	# 	@user = User.find(params[:id])
+	# 	if @user.update(user_params)
+	# 		redirect_to @user
+	# 	else
+	# 		render :edit
+	# 	end
+	# end
+
 	def update
 		@user = User.find(params[:id])
 		respond_to do |format| 
 			if @user.update(user_params)
-				format.html { redirect_to users_path(@user) }
+				format.html { redirect_to user_path(@user) }
 				format.json { render json: @user }
 			end
 		end
 	end
 
-	# def destroy
-	# 	@user = User.find(params[:id])
-	# 	respond_to do |format|
-	# 		@user.destroy
-	# 		format.html { redirect_to users_path }
-	# 		format.json { render json: @user}
-	# 	end
-	# end
-
 	def destroy
 		@user = User.find(params[:id])
-		@user.destroy
+		respond_to do |format|
+			@user.destroy		
+			format.html { redirect_to root_path }
+			format.json { render json: @user}
 
-		if @user.destroy
-			redirect_to root_path
 		end
 	end
+
+	# def destroy
+	# 	@user = User.find(params[:id])
+	# 	@user.destroy
+
+	# 	if @user.destroy
+	# 		redirect_to root_path
+	# 	end
+	# end
 	
 
 	private
