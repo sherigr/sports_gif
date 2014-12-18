@@ -18,7 +18,10 @@
 
 body {
 	text-align: center;
-	font-size: 48px;
+	font-size: 14px;
 	background-color: #D5E9F1;
 }
 
+header {
+	font-size: 48px;
+}

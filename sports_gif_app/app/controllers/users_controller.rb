@@ -49,11 +49,20 @@ class UsersController < ApplicationController
 			redirect_to root_path
 		end
 	end
+
+	def create_memory
+		session[:current_name] = params[:name]
+		redirect_to '/'
+	end
 	
+	def destroy_memory
+		session[:current_name] = nil
+		redirect_to '/'
+	end
 
 	private
 	def user_params
-		params.require(:user).permit(:first_name, :last_name, :username, :favorite, :password, :password_confirmation)
+		params.require(:user).permit(:first_name, :last_name, :username, :email, :password, :password_confirmation)
 	end
 end
 
