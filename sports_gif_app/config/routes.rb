@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   resources :gifs, only: [:index, :show, :new, :create, :destroy]
   resources :users, only: [:new, :create, :edit, :update, :destroy]
 
-  get 'sessions/new' => 'sessions#new', as: 'login'
-  post 'sessions' => 'sessions#create'
-  delete 'sessions' => 'sessions#destroy'
+  get '/sessions/new' => 'sessions#new', as: 'login'
+  post '/sessions/new' => 'sessions#new'
+  post '/sessions' => 'sessions#create' 
+  delete '/sessions' => 'sessions#destroy'
 end
 
   # The priority is based upon order of creation: first created -> highest priority.
