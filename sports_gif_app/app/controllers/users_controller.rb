@@ -22,38 +22,50 @@ class UsersController < ApplicationController
 		render :edit
 	end
 
+	# def update
+	# 	@user = User.find(params[:id])
+	# 	if @user.update(user_params)
+	# 		redirect_to @user
+	# 	else
+	# 		render :edit
+	# 	end
+	# end
+
 	def update
 		@user = User.find(params[:id])
 		respond_to do |format| 
 			if @user.update(user_params)
-				format.html { redirect_to users_path(@user) }
+				format.html { redirect_to user_path(@user) }
 				format.json { render json: @user }
 			end
 		end
 	end
 
-	# def destroy
-	# 	@user = User.find(params[:id])
-	# 	respond_to do |format|
-	# 		@user.destroy
-	# 		format.html { redirect_to users_path }
-	# 		format.json { render json: @user}
-	# 	end
-	# end
-
 	def destroy
 		@user = User.find(params[:id])
-		@user.destroy
+		respond_to do |format|
+			@user.destroy		
+			format.html { redirect_to root_path }
+			format.json { render json: @user}
 
-		if @user.destroy
-			redirect_to root_path
 		end
 	end
 
+<<<<<<< HEAD
 	def create_memory
 		session[:current_name] = params[:name]
 		redirect_to '/'
 	end
+=======
+	# def destroy
+	# 	@user = User.find(params[:id])
+	# 	@user.destroy
+
+	# 	if @user.destroy
+	# 		redirect_to root_path
+	# 	end
+	# end
+>>>>>>> f236787ac94559f33bc3b1e621aa6109e8967212
 	
 	def destroy_memory
 		session[:current_name] = nil
