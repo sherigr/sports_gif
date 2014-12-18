@@ -51,12 +51,12 @@ class UsersController < ApplicationController
 		end
 	end
 
-<<<<<<< HEAD
+
 	def create_memory
 		session[:current_name] = params[:name]
 		redirect_to '/'
 	end
-=======
+
 	# def destroy
 	# 	@user = User.find(params[:id])
 	# 	@user.destroy
@@ -65,7 +65,7 @@ class UsersController < ApplicationController
 	# 		redirect_to root_path
 	# 	end
 	# end
->>>>>>> f236787ac94559f33bc3b1e621aa6109e8967212
+
 	
 	def destroy_memory
 		session[:current_name] = nil
