@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	# before_action :check_auth, :only => [:edit, :update, :destroy]
+	
 
 
 	def new

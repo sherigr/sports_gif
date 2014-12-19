@@ -8,6 +8,11 @@
  * Designed and built with all the love in the world by @mdo and @fat.
  */
 
+#button-moreGifs {
+  position: absolute;
+  bottom: 0;
+}
+
 .clearfix {
   *zoom: 1;
 }

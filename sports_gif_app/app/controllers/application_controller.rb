@@ -7,10 +7,15 @@ class ApplicationController < ActionController::Base
   	render layout: 'application', text: ''
   end
 
+  def authenticate
+    redirect_to login_path unless session[:current_user_id]
+  end
+
   def show
   	@gif = Gif.find(params[:id])
 		render json: @gif
   end
+
 
 
 end

@@ -5,13 +5,13 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-
-
-
-
 </head>
+
 <body>
 	<header>
+
+		<%= button_to 'Log In', login_path %>
+
 	<h1><hr>The GIF of Sports</hr></h1>
 </header>
 
@@ -23,12 +23,20 @@
 		<div id="results"></div>
 	</div>
 
-<section id='gifs'>
+
+
+	<section id='gifs'>
+		<div>
+		<button id='moreGifs'>More Gifs</button>
+	</div>
+	</section>
 
 
 
+	<div class="container">
+		<button id='searchMore'>Search More</button>
+	</section>
 
-</section>
 
 
 </body>
