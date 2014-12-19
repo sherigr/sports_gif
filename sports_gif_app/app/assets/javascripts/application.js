@@ -28,6 +28,8 @@ $(function() {
 	$('#gifs').on('click', 'img', viewGif);
 	$('#search-button').click(searchGifs);
 	$('#moreGifs').click(moreGifs);
+	// $('#searchMore').click(moreGifs);
+	$('#searchMore').click(searchGifs);
 	$('#search-input').keydown(function (e) {
 		if (e.keyCode === 13) {
 			searchGifs()
@@ -79,9 +81,23 @@ function searchGifs() {
 		}
 	});
 	searchOffset += 25;
-	
 };
 
+// function searchGifs() {
+// 	var userInput = $('#search-input').val()
+// 	console.log(userInput);
+// 	$.get('http://api.giphy.com/v1/gifs/search?q=' + userInput + '&api_key=dc6zaTOxFJmzC&limit=50').done(function(gifs) {
+// 		console.log(gifs);
+
+// 		$('#gifs').empty();
+// 		for (var i = 0; i < gifs.data.length; i++) {
+// 			var $img = $('<img />').attr('src', gifs.data[i].images.fixed_height.url);
+// 			$('#gifs').append($img);
+// 		}
+// 	});
+// 	searchOffset += 25;
+// 	console.log(gifs);
+// };
 
 function moreGifs() {
 	console.log('working') // Remove this once function working right
@@ -93,7 +109,17 @@ function moreGifs() {
 	});			
 	gifsOffset += 25;
 };
-		
+
+function searchMore() {
+	console.log('searching more')
+	// $.get('http://api.giphy.com/v1/gifs/search?q=' + userInput + searchOffset + '&api_key=dc6zaTOxFJmzC&offset=').done(function(gifs) {
+	// 	for (var i = 0; i < gifs.data.length; i++) {
+	// 		var $img = $('<img />').attr('src', gifs.data[i].images.fixed_height.url); 			
+	// 		$('#gifs').append($img);
+	// 	}
+	// });
+	// searchOffset += 25;
+};		
 
 // function moreGifs() {
 // 	console.log('working') // Remove this once function working right
