@@ -29,7 +29,7 @@ $(function() {
 	$('#search-button').click(searchGifs);
 	$('#moreGifs').click(moreGifs);
 	// $('#searchMore').click(moreGifs);
-	$('#searchMore').click(searchGifs);
+	$('#searchMore').click(searchMore);
 	$('#search-input').keydown(function (e) {
 		if (e.keyCode === 13) {
 			searchGifs()
@@ -100,7 +100,7 @@ function searchGifs() {
 // };
 
 function moreGifs() {
-	console.log('working') // Remove this once function working right
+	console.log('working') 
 	$.get('http://api.giphy.com/v1/gifs/search?q=sports&api_key=dc6zaTOxFJmzC&offset=' + gifsOffset).done(function(gifs) {
 		for (var i = 0; i < gifs.data.length; i++) {
 			var $img = $('<img />').attr('src', gifs.data[i].images.fixed_height.url); 			
@@ -112,24 +112,16 @@ function moreGifs() {
 
 function searchMore() {
 	console.log('searching more')
-	// $.get('http://api.giphy.com/v1/gifs/search?q=' + userInput + searchOffset + '&api_key=dc6zaTOxFJmzC&offset=').done(function(gifs) {
-	// 	for (var i = 0; i < gifs.data.length; i++) {
-	// 		var $img = $('<img />').attr('src', gifs.data[i].images.fixed_height.url); 			
-	// 		$('#gifs').append($img);
-	// 	}
-	// });
-	// searchOffset += 25;
+		var userInput = $('#search-input').val()
+	$.get('http://api.giphy.com/v1/gifs/search?q=' + userInput + searchOffset + '&api_key=dc6zaTOxFJmzC&offset=').done(function(gifs) {
+		for (var i = 0; i < gifs.data.length; i++) {
+			var $img = $('<img />').attr('src', gifs.data[i].images.fixed_height.url); 			
+			$('#gifs').append($img);
+		}
+	});
+	searchOffset += 25;
 };		
 
-// function moreGifs() {
-// 	console.log('working') // Remove this once function working right
-// 	$.get('http://api.giphy.com/v1/gifs/search?q=sports&api_key=dc6zaTOxFJmzC&offset=' + gifsOffset).done(function(gifs) {
-// 		var $img=$('<img />').attr('src', gifs.data[i].images.fixed_height.url);
-// 		$('#gifs').append($img);
-// 	});			
-
-// 	gifsOffset += 25;
-// };
 
 
 
