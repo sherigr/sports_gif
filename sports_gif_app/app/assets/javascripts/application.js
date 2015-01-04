@@ -20,6 +20,11 @@
 var gifsOffset = 50;
 var searchOffset = 25;
 
+var init = function() {
+	if ($('#gifs').length) {
+		renderGifs();
+	}
+};
 
 $(function() {
 	console.log('Up and Running');
@@ -64,29 +69,13 @@ function renderGifs() {
 function viewGif() {
 	$('img').hide();
 	$(this).show();
-	// var $img = $('<img />').attr('src', gifs.data[i].images.original.url); 
-	// 		$('#gifs').append($img);
-};
-
-function searchGifs() {
-	var userInput = $('#search-input').val()
-	console.log(userInput);
-	$.get('http://api.giphy.com/v1/gifs/search?q=' + userInput + '&api_key=dc6zaTOxFJmzC&offset=').done(function(gifs) {
-		console.log(gifs);
-
-		$('#gifs').empty();
-		for (var i = 0; i < gifs.data.length; i++) {
-			var $img = $('<img />').attr('src', gifs.data[i].images.fixed_height.url);
-			$('#gifs').append($img);
-		}
-	});
-	searchOffset += 25;
+	
 };
 
 // function searchGifs() {
 // 	var userInput = $('#search-input').val()
 // 	console.log(userInput);
-// 	$.get('http://api.giphy.com/v1/gifs/search?q=' + userInput + '&api_key=dc6zaTOxFJmzC&limit=50').done(function(gifs) {
+// 	$.get('http://api.giphy.com/v1/gifs/search?q=' + userInput + '&api_key=dc6zaTOxFJmzC&offset=').done(function(gifs) {
 // 		console.log(gifs);
 
 // 		$('#gifs').empty();
@@ -96,8 +85,23 @@ function searchGifs() {
 // 		}
 // 	});
 // 	searchOffset += 25;
-// 	console.log(gifs);
 // };
+
+function searchGifs() {
+	var userInput = $('#search-input').val()
+	console.log(userInput);
+	$.get('http://api.giphy.com/v1/gifs/search?q=' + userInput + '&api_key=dc6zaTOxFJmzC&limit=50').done(function(gifs) {
+		console.log(gifs);
+
+		$('#gifs').empty();
+		for (var i = 0; i < gifs.data.length; i++) {
+			var $img = $('<img />').attr('src', gifs.data[i].images.fixed_height.url);
+			$('#gifs').append($img);
+		}
+	});
+	searchOffset += 25;
+	console.log(gifs);
+};
 
 function moreGifs() {
 	console.log('working') 
@@ -113,13 +117,14 @@ function moreGifs() {
 function searchMore() {
 	console.log('searching more')
 		var userInput = $('#search-input').val()
-	$.get('http://api.giphy.com/v1/gifs/search?q=' + userInput + searchOffset + '&api_key=dc6zaTOxFJmzC&offset=').done(function(gifs) {
+	$.get('http://api.giphy.com/v1/gifs/search?q=' + userInput + '&api_key=dc6zaTOxFJmzC&offset=' + searchOffset).done(function(gifs) {
 		for (var i = 0; i < gifs.data.length; i++) {
 			var $img = $('<img />').attr('src', gifs.data[i].images.fixed_height.url); 			
 			$('#gifs').append($img);
 		}
 	});
 	searchOffset += 25;
+	console.log(gifs);
 };		
 
 
